@@ -1,3 +1,21 @@
+/*
+=========================================================================================================
+Function: bronze.load_bronze()
+=========================================================================================================
+Purpose:
+    This function loads raw data into the 'bronze' schema.
+    It performs the following actions:
+    - Truncates tables in the bronze schema to ensure a clean state.
+    - Uses the PostgreSQL COPY command to load data from CSV files into bronze tables.
+    - Logs progress and execution times for each table and the overall process using RAISE NOTICE.
+    - Includes error handling to capture and report issues during execution.
+
+Usage:
+    Execute with: SELECT bronze.load_bronze();
+    Ensure CSV files are accessible at the specified paths and the PostgreSQL server has read permissions.
+    Check logs in the VS Code PostgreSQL extension Output panel (set client_min_messages TO NOTICE) or psql.
+*/
+
 CREATE OR REPLACE FUNCTION bronze.load_bronze()
 RETURNS void AS $$
 DECLARE
